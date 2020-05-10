@@ -34,6 +34,13 @@ $_documentContainer.innerHTML = `
     .description img{
       vertical-align: middle;
     }
+    .version-footer{
+    margin:0;
+    font-size: small;
+    color: #062307;
+    font-style: italic;
+    text-align: center;
+    }
   </style>
 </custom-style>
 

@@ -9,6 +9,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.*;
+import org.avajadi.opendata.covid.Version;
 import org.avajadi.opendata.covid.backend.BackendService;
 import org.avajadi.opendata.covid.backend.Country;
 import org.avajadi.opendata.covid.backend.TimeSeries;
@@ -34,8 +35,8 @@ public class DashboardView extends VerticalLayout implements HasUrlParameter<Str
     private final H2 eventsH2 = new H2();
     private final H2 conversionH2 = new H2();
     private final List<Series> series;
-    private Chart doublingPeriods = new Chart();
     private final DateTimeFormatter outDateFormatter = DateTimeFormatter.ofPattern("d/M");
+    private final Chart doublingPeriods = new Chart();
     private Country currentCountry = Country.of("Sweden");
 
     public DashboardView() {
@@ -53,14 +54,20 @@ public class DashboardView extends VerticalLayout implements HasUrlParameter<Str
         add(doublingPeriods);
 
         Div description = new Div();
-        Span descContent =new Span("Doubling period is calculated using the formula ");
+        Span descContent = new Span("Doubling period is calculated using the formula ");
         Image formula = new Image();
         formula.setSrc("https://wikimedia.org/api/rest_v1/media/math/render/svg/137261413a0a52ccba07032f1abc0d6338e906ff");
-        descContent.add(new Anchor("https://en.wikipedia.org/wiki/Doubling_time",formula ));
+        descContent.add(new Anchor("https://en.wikipedia.org/wiki/Doubling_time", formula));
         description.add(descContent);
         description.addClassName("description");
 
         add(description);
+
+        Div versionFooter = new Div();
+        versionFooter.addClassName("version-footer");
+        Span versionContent = new Span("BuildTime:" + Version.getBuildTime());
+        versionFooter.add(versionContent);
+        add(versionFooter);
     }
 
     @Override
@@ -76,8 +83,8 @@ public class DashboardView extends VerticalLayout implements HasUrlParameter<Str
         Set<LocalDate> allDates = new HashSet<>();
 //        for( String countryName : MainView.selectableCountries) {
 //            Country c = Country.of(countryName);
-            List<LocalDate> dates = addCountrySeries(currentCountry, configuration);
-            allDates.addAll(dates);
+        List<LocalDate> dates = addCountrySeries(currentCountry, configuration);
+        allDates.addAll(dates);
 //        }
 
         XAxis x = new XAxis();

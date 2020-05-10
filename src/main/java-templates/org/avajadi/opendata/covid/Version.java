@@ -1,4 +1,4 @@
-package se.ri.eddie.kompis.vault;
+package org.avajadi.opendata.covid;
 
 public final class Version {
 

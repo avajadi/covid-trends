@@ -1,22 +1,5 @@
-# Custom project from start.vaadin.com
+# Simple graph visualising the speed at which COVID-19 is spreading in terms of case doubling time
 
-This project was created from https://start.vaadin.com. It's a fully working Vaadin application that you continue developing locally.
-It has all the necessary dependencies and files to help you get going.
-
-The project is a standard Maven project, so you can import it to your IDE of choice. You'll need to have Java 8+ and Node.js 10+ installed.
-
-To run from the command line, use `mvn jetty:run` and open [http://localhost:8080](http://localhost:8080) in your browser.
-
-## Project structure
-
-- `MainView.java` in `src/main/java` contains the navigation setup. It uses [App Layout](https://vaadin.com/components/vaadin-app-layout).
-- `views` package in `src/main/java` contains the server-side Java views of your application.
-- `views` folder in `frontend/src/` contains the client-side JavaScript views of your application.
-
-## What next?
-
-[vaadin.com](https://vaadin.com) has lots of material to help you get you started:
-
-- Follow the tutorials in [vaadin.com/tutorials](https://vaadin.com/tutorials). Especially [vaadin.com/tutorials/getting-started-with-flow](https://vaadin.com/tutorials/getting-started-with-flow) is good for getting a grasp of the basic Vaadin concepts.
-- Read the documentation in [vaadin.com/docs](https://vaadin.com/docs).
-- For a bigger Vaadin application example, check out the Full Stack App starter from [vaadin.com/start](https://vaadin.com/start).
+This project was created from https://start.vaadin.com and then shoved into this form to do what I wanted it to do. This entire project is a simple, mostly-for-my-own-amusement kinda thing, so please use it with that in mind.
+Doubling time, in days, is simply calculated for each day based on the number of confirmed cases that day and the previous day. Each data series is filtered to ignore values until there are 100 confirmed cases to at least give this some level of correctness in terms of calculations and the basis for them.
+As indicated in the graph, all data is fetched from the John Hopkins University datasets available on github.
